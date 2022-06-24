@@ -1,9 +1,5 @@
-import tkinter
 from tkinter import *
-from tkinter import filedialog
-from PIL import ImageTk, Image
 from gallery import Gallery
-from workspace import Workspace
 from watermark import *
 import os
 

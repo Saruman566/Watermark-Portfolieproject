@@ -1,7 +1,6 @@
 import tkinter
 from tkinter import *
 from PIL import ImageTk, Image
-import os
 
 class Gallery(tkinter.Frame):
 

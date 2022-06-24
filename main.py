@@ -1,6 +1,5 @@
 import tkinter
 from gallery import Gallery
-from workspace import Workspace
 from menubar import Menubar
 from watermark import *
 
