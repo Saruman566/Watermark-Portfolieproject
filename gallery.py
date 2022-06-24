@@ -1,6 +1,7 @@
 import tkinter
 from tkinter import *
 from PIL import ImageTk, Image
+import os
 
 class Gallery(tkinter.Frame):
 
@@ -22,9 +23,8 @@ class Gallery(tkinter.Frame):
 
         t = 0
         z = 75
-#
+
         for pic in range((len(file_names))):
-#
             img = ImageTk.PhotoImage(Image.open(f'thumbnails/thumbnail{t}.jpg'))
             label = Label(image=img)
             label.image = img

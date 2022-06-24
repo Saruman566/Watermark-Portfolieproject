@@ -38,7 +38,6 @@ class Menubar(tkinter.Frame):
 
         file_names = filedialog.askopenfilenames()
         Menubar.make_thumbnails(self, file_names)
-        print(file_names)
 
     def make_thumbnails(self, file_names):
         image = []
@@ -51,9 +50,15 @@ class Menubar(tkinter.Frame):
             image[pic].thumbnail((900, 900))
             image[pic].save(f'images/image{pic}.jpg')
             thumbnail[pic].thumbnail((200,200))
-            thumbnail[pic].save(f'thumbnails/thumbnail{pic}.jpg')
+            try:
+                thumbnail[pic].save(f'thumbnails/thumbnail{pic}.jpg')
+            except FileNotFoundError:
+                os.mkdir("thumbnails")
+                thumbnail[pic].save(f'thumbnails/thumbnail{pic}.jpg')
+            else:
+                thumbnail[pic].save(f'thumbnails/thumbnail{pic}.jpg')
 
-        if os.path.exists('./thumbnails/thumbnail0.jpg') is True:
+        if os.path.exists('./thumbnails') is True:
 
             Gallery.make_tpic(self=Gallery, file_names=file_names)
             worplace_container = tkinter.Frame(self)
@@ -62,10 +67,16 @@ class Menubar(tkinter.Frame):
 
     def go_out(self):
 
-        for f in os.listdir("thumbnails"):
-            os.remove(os.path.join("thumbnails", f))
-        for f in os.listdir("images"):
-            os.remove(os.path.join("images", f))
+        try:
+            for f in os.listdir("thumbnails"):
+                os.remove(os.path.join("thumbnails", f))
+        except WindowsError:
+            pass
+        try:
+            for f in os.listdir("images"):
+                os.remove(os.path.join("images", f))
+        except WindowsError:
+            pass
         exit()
 
     def next(self):

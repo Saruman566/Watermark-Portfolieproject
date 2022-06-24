@@ -20,8 +20,12 @@ class Workspace(tkinter.Frame):
         self.main_canvas.configure(bg="#ffffff", bd=0, highlightthickness=0)
         self.images = []
 
-        for f in os.listdir('images'):
-            self.images.append(f)
+        try:
+            for f in os.listdir('images'):
+                self.images.append(f)
+        except WindowsError:
+            os.mkdir("images")
+
 
         if os.path.exists('./images/image0.jpg') is True:
 
