@@ -44,7 +44,7 @@ class Menubar(tkinter.Frame):
             image[pic] = Image.open(file_names[pic])
             thumbnail[pic] = Image.open(file_names[pic])
             image[pic].thumbnail((900, 900))
-            image[pic].save(f'images/image{pic}.jpg')
+            image[pic].save(f'images/image{pic}.png')
             thumbnail[pic].thumbnail((200,200))
             try:
                 thumbnail[pic].save(f'thumbnails/thumbnail{pic}.jpg')
