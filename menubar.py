@@ -25,8 +25,10 @@ class Menubar(tkinter.Frame):
         self.next_button = Button(text='Next', width=5, heigh=2, bg='#F24C4C', fg='#293462',
                                   command=self.next)
         self.next_button.place(x=700, y=7)
-        self.save_button = Button(text='Save pics', width=15, heigh=2, bg='#F24C4C', fg='#293462', command=self.save_pics)
-        self.save_button.place(x=860, y=7)
+
+        self.save_button = Button(text='Save pics', width=15, heigh=2, bg='#F24C4C', fg='#293462', command=self.save_pic)
+        self.save_button.place(x=800, y=7)
+
         self.exit_button = Button(text='Exit', width=15, heigh=2, bg='#F24C4C', fg='#293462', command=self.go_out)
         self.exit_button.place(x=1055, y=7)
 
@@ -87,6 +89,6 @@ class Menubar(tkinter.Frame):
 
         Watermark_interface()
 
-    def save_pics(self):
+    def save_pic(self):
 
-        Workspace(self).save_pics()
+        Workspace(self).save_pic()

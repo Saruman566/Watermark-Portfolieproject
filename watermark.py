@@ -1,7 +1,5 @@
 import tkinter.font
-from tkinter import *
 from tkinter import ttk
-from PIL import ImageTk, Image
 from workspace import *
 import os
 
@@ -63,7 +61,7 @@ class Watermark_interface(tkinter.Tk):
         self.create_button = Button(self, text="Create", width=10, heigh=2, command=self.text_create)
         self.create_button.place(x=160, y=265)
 
-    def text_create(self, *args):
+    def text_create(self):
 
         if os.path.exists('./images/image0.png') is True:
 

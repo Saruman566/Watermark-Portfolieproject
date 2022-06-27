@@ -1,6 +1,6 @@
 import tkinter
 from tkinter import *
-from PIL import ImageTk, Image, ImageGrab, ImageDraw, ImageFont
+from PIL import ImageTk, Image, ImageDraw, ImageFont
 from tkinter import filedialog
 import os
 from natsort import natsorted, ns
@@ -18,7 +18,9 @@ class Workspace(tkinter.Frame):
         self.main_canvas = Canvas(self.main_frame, width=944, heigh=844, bg="#ffffff")
         self.main_canvas.grid(column=1, row=1, sticky='NW')
         self.main_canvas.configure(bg="#ffffff", bd=0, highlightthickness=0)
+        self.save_picture = ()
         self.images = []
+        self.new_list = []
 
         try:
             for f in os.listdir('images'):
@@ -28,8 +30,11 @@ class Workspace(tkinter.Frame):
 
         if os.path.exists('./images/image0.png') is True:
 
-            if self.images[2] == 'image10.png':
-                self.images = natsorted(self.images, alg=ns.PATH | ns.IGNORECASE)
+            try:
+                if self.images[2] == 'image10.png':
+                    self.images = natsorted(self.images, alg=ns.PATH | ns.IGNORECASE)
+            except IndexError:
+                pass
 
             self.pic = Image.open(f"images/{self.images[counter]}")
             self.img = ImageTk.PhotoImage(self.pic)
@@ -91,7 +96,6 @@ class Workspace(tkinter.Frame):
         te_font = ImageFont.truetype(font, int(size))
         pic_with_text.text((20, 15), intext, color, font=te_font)
         self.pic.save("images/img2.png")
-        self.img_label.delete('all')
         self.pic = Image.open(f"images/img2.png")
         self.img = ImageTk.PhotoImage(self.pic)
         self.w = self.img.width()
@@ -101,8 +105,7 @@ class Workspace(tkinter.Frame):
         self.img_label.grid(column=0, row=0, sticky='NW')
         self.img_label.place(x=275, y=150)
 
+    def save_pic(self):
 
-    def save_pics(self):
-
-        self.save_pic = Image.open(f"images/img2.png")
-        self.save_pic.save(filedialog.asksaveasfile(filetypes=[("jpg file", ".jpg")], defaultextension=".jpg"))
+        self.save_picture = Image.open(f"images/img2.png")
+        self.save_picture.save(filedialog.asksaveasfile(filetypes=[("jpg file", ".jpg")], defaultextension=".jpg"))
